@@ -8,7 +8,7 @@ from pyrogram import Client, idle
 from pyrogram.enums import ParseMode
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from apscheduler.triggers.cron import CronTrigger
+from apscheduler.triggers.interval import IntervalTrigger
 
 
 uvloop.install() # https://pyrodocs.kurimuzon.ru/topics/speedups/#uvloop
@@ -34,14 +34,12 @@ app = Client(
     'you',
     int(os.getenv('API_ID')),
     os.getenv('API_HASH'),
-    'Buscobot 1.0.0',
+    'Buscobot 1.0.1',
     parse_mode=ParseMode.HTML,
     no_updates=True,
     hide_password=True
 )
-scheduler = AsyncIOScheduler({
-    'apscheduler.timezone': 'America/Sao_Paulo'
-})
+scheduler = AsyncIOScheduler()
 
 
 async def send_busco_msg():
@@ -52,13 +50,12 @@ async def send_busco_msg():
 
 async def main():
     await app.start()
-    for hour in range(24):
-        scheduler.add_job(
-            send_busco_msg,
-            CronTrigger(
-                hour=hour
-            )
+    scheduler.add_job(
+        send_busco_msg(),
+        IntervalTrigger(
+            minutes=30
         )
+    )
     await idle()
     await app.stop()
 

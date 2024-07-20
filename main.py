@@ -11,7 +11,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 
-uvloop.install()
+uvloop.install() # https://pyrodocs.kurimuzon.ru/topics/speedups/#uvloop
 if os.path.exists('.env'):
     load_dotenv('.env')
 logging.basicConfig(level=logging.INFO)

@@ -51,7 +51,7 @@ async def send_busco_msg():
 async def main():
     await app.start()
     scheduler.add_job(
-        send_busco_msg(),
+        send_busco_msg,
         IntervalTrigger(
             minutes=30
         )

@@ -34,10 +34,9 @@ app = Client(
     'you',
     int(os.getenv('API_ID')),
     os.getenv('API_HASH'),
-    'Buscobot 1.0.1',
+    'Buscobot 1.0.0',
     parse_mode=ParseMode.HTML,
-    no_updates=True,
-    hide_password=True
+    no_updates=True
 )
 scheduler = AsyncIOScheduler()
 

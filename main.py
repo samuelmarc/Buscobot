@@ -22,7 +22,7 @@ BUSCO_MSG = '''
 
 <blockquote>cartas</blockquote>
 
-<emoji id="5791947163126730408">🚨</emoji> </i>responda com <code>/adbusca</code> ou <code>/adbusca ac</code></i> <emoji id="5791947163126730408">🚨</emoji>
+<emoji id="5791947163126730408">🚨</emoji> <i>responda com <code>/adbusca</code> ou <code>/adbusca ac</code></i> <emoji id="5791947163126730408">🚨</emoji>
 '''
 
 BUSCO_CHATS = [

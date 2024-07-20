@@ -1,6 +1,7 @@
 import logging
 import os
 import asyncio
+import uvloop
 
 from pyrogram import Client, idle
 from pyrogram.enums import ParseMode
@@ -9,6 +10,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 
+uvloop.install() # https://pyrodocs.kurimuzon.ru/topics/speedups/#uvloop
 logging.basicConfig(level=logging.INFO)
 
 

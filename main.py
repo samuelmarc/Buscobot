@@ -28,13 +28,14 @@ BUSCO_MSG = '''
 BUSCO_CHATS = [
     'me'
 ]
+LAST_MESSAGES = {}
 
 
 app = Client(
     'you',
     int(os.getenv('API_ID')),
     os.getenv('API_HASH'),
-    'Buscobot 1.0.0',
+    'Buscobot',
     parse_mode=ParseMode.HTML,
     no_updates=True
 )
@@ -43,7 +44,10 @@ scheduler = AsyncIOScheduler()
 
 async def send_busco_msg():
     for chat in BUSCO_CHATS:
-        await app.send_message(chat, BUSCO_MSG)
+        if chat in LAST_MESSAGES:
+            await app.delete_messages(chat, LAST_MESSAGES[chat])
+        msg = await app.send_message(chat, BUSCO_MSG)
+        LAST_MESSAGES[chat] = msg.id
         await asyncio.sleep(3)
 
 
